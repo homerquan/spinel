@@ -1,0 +1,40 @@
+{
+  "name": "Spinel",
+  "title": "Spinel MVC framework for performance",
+  "description": "A MVC framework with up-to-date components based on Backbone.js and Require.js Boilerplate (https://github.com/gfranko/Backbone-Require-Boilerplate).",
+  "version": "1.0.0",
+  "homepage": "https://github.com/homerquan/spinel",
+  "author": {
+    "name": "Homer Quan",
+    "email": "support@homerquan.com",
+    "url": "http://www.homerquan.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:homerquan/spinel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/homerquan/spinel/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+  "main": "./server/server",
+  "keywords": [
+    "Backbone.js",
+    "Require.js",
+    "Handlerbars",
+    "MVC framework"
+  ],
+  "devDependencies": {
+    "express": "3.x",
+    "http-proxy": "~0.10.3",
+    "grunt": "~0.4.1",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-contrib-jshint": "~0.3.0",
+    "uglify-js": "~2.2.5"
+  }
+}
