@@ -19,7 +19,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": ""
+      "url": "https://github.com/homerquan/spinel/blob/master/LICENSE-MIT"
     }
   ],
   "main": "./server/server",
