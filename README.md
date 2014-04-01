@@ -7,5 +7,6 @@ Features includes:
 - requirejs
 - handlebars
 - PubSub
+- Less
 - Base Class and Mixins for model, view, router
 - pnotify
