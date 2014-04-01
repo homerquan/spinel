@@ -1,8 +1,6 @@
-Spinel 
 ![alt tag](http://spirtfire.com/res/img/spinel.png)
 ======
-
-A fast web MVC framework based on BRB
+Spinel: A fast web MVC framework based on BRB
 
 Features includes:
 - Backbone
