@@ -1,36 +1,66 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery", "backbone", "models/Model", "views/HomePageView", "views/LoginPageView", "collections/Collection"],
+define(["jquery", "backbone", "./BaseRouter", "../models/SessionModel",
+        "views/HomePageView", "views/LoginPageView",
+        "views/ProfilePageView", "views/UserStatusView",
+        "views/RegisterPageView"
+    ],
 
-    function($, Backbone, Model, HomePageView, LoginPageView, Collection) {
+    function($, Backbone, BaseRouter, Session,
+        HomePageView, LoginPageView,
+        ProfilePageView, UserStatusView,
+        RegisterPageView) {
 
-        var DesktopRouter = Backbone.Router.extend({
+        var DesktopRouter = BaseRouter.extend({
 
             initialize: function() {
                 // Tells Backbone to start watching for hashchange events
+                this.session = new Session();
+                // Singleton Views
+                this.userStatusView = new UserStatusView({
+                    session: this.session
+                });
+
+                this.userStatusView.render();
                 Backbone.history.start();
             },
 
             // All of your Backbone Routes (add more)
             routes: {
                 // When there is no hash on the url, the home method is called
-                "": "index",
-                "home/:query": "home",
-                "login" : "login"
+                "": "home",
+                "login": "login",
+                "profile": "profile",
+                "profile/:query": "profile",
+                "register": "register"
             },
 
-            index: function() {
-                 new HomePageView();
+            //Route handlers
+            home: function() {
+                this.loadView(new HomePageView({
+                    session: this.session
+                }));
             },
 
-            home: function(query) {
-                new HomePageView({query:query});
-            },
 
             login: function() {
-                new LoginPageView();
-            }
+                this.loadView(new LoginPageView({
+                    session: this.session
+                }));
+            },
 
+            profile: function() {
+
+                this.loadView(new ProfilePageView({
+                    session: this.session
+                }));
+            },
+
+            register: function() {
+                this.loadView(new RegisterPageView({
+                    session: this.session
+                }));
+            }
 
         });
 

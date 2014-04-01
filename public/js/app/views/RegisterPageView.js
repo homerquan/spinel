@@ -1,7 +1,7 @@
 // LoginModalView.js
 // -------
 define(["jquery", "backbone", "handlebars",
-        "./BaseView", "text!templates/login_page.handlebars"
+        "./BaseView", "text!templates/register_page.handlebars"
     ],
 
     function($, Backbone, Handlebars, BaseView, template) {
@@ -14,7 +14,6 @@ define(["jquery", "backbone", "handlebars",
 
             // View Event Handlers
             events: {
-                "click #btn-signin": "signin",
                 "click #btn-signup": "signup"
             },
 
@@ -25,11 +24,8 @@ define(["jquery", "backbone", "handlebars",
                 return this;
             },
 
-            signin: function(e) {
-                e.preventDefault();
-                var name = this.$('#username').val();
-                var pass = this.$('#password').val();
-                this.session.login(name, pass);
+            signup: function() {
+
             }
         });
 

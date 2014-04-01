@@ -1,7 +1,9 @@
-// LoginModalView.js
+// ProfilePageView.js
+// show self profile from session 
+// or other's specified by id
 // -------
 define(["jquery", "backbone", "handlebars",
-        "./BaseView", "text!templates/login_page.handlebars"
+        "./BaseView", "text!templates/profile_page.handlebars"
     ],
 
     function($, Backbone, Handlebars, BaseView, template) {
@@ -14,23 +16,17 @@ define(["jquery", "backbone", "handlebars",
 
             // View Event Handlers
             events: {
-                "click #btn-signin": "signin",
-                "click #btn-signup": "signup"
+
             },
 
             // Renders the view's template to the UI
             render: function() {
-                this.$el.html(this.template());
-                // Maintains chainability
-                return this;
-            },
 
-            signin: function(e) {
-                e.preventDefault();
-                var name = this.$('#username').val();
-                var pass = this.$('#password').val();
-                this.session.login(name, pass);
+                // Render Layout
+                this.$el.html(this.template());
+                return this;
             }
+
         });
 
         // Returns the View class

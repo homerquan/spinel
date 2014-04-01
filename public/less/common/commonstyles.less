@@ -1,0 +1,118 @@
+@import "variables";
+
+body {
+  background-image: url('../img/background.png');
+}
+
+#page-container {
+  margin-top: 20px;
+}
+
+.container {
+   width: 940px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.top-right-helper {
+	position: absolute;
+	right: 5px;
+    top: 5px;
+}
+
+hr.fancy-line { 
+    border: 0; 
+    height: 1px;
+    position: relative;
+    margin: 0.5em 0; /* Keep other elements away from pseudo elements*/
+}
+hr.fancy-line:before {
+    top: -0.5em;
+    height: 1em;
+}
+hr.fancy-line:after {
+    content:'';
+    height: 0.5em;   /* half the height of :before */
+    top: 1px;        /* height of hr*/
+}
+
+hr.fancy-line:before, hr.fancy-line:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+}
+
+hr.fancy-line, hr.fancy-line:before {
+    background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 75%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 75%, color-stop(0%,rgba(0,0,0,0.1)), color-stop(75%,rgba(0,0,0,0)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 75%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 75%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 75%);
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 75%);
+}
+
+hr.fancy-line:after {
+    background: white;
+}
+
+.cp a {
+   color: @dark;
+}
+.cp a .cp-number {
+    color: black;
+}
+
+.no-space-helper {
+  margin: 0px;
+  padding: 0px;
+}
+
+.star-ratings {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 15px;
+  height: 15px;
+  width: 60px;
+  position: relative;
+} 
+.star-ratings::before { 
+  content: '★★★★';
+  opacity: .3;
+}
+
+[title="1"]::after {
+  width: 0%;
+}
+[title="2"]::after {
+  width: 12.5%;
+}
+[title="3"]::after {
+  width: 25%;
+}
+[title="4"]::after {
+  width: 37.5%;
+}
+[title="5"]::after {
+  width: 50%;
+}
+[title="6"]::after {
+  width: 62.5%;
+}
+[title="7"]::after {
+  width: 75%;
+}
+[title="8"]::after {
+  width: 87.5%;
+}
+.star-ratings::after {
+  color: gold;
+  content: '★★★★';
+  position: absolute;
+  z-index: 1;
+  display: block;
+  left: 0;
+  top:0;
+  width: attr(rating);
+  overflow: hidden;
+}

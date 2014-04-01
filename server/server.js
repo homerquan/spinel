@@ -1,160 +1,49 @@
-// DEPENDENCIES
-// ============
 var express = require("express"),
-flash = require('connect-flash'),
-httpProxy = require('http-proxy'),
-port = (parseInt(process.env.FE_PORT) || 8001),
-beHost = (process.env.BE_HOST || 'localhost'),
-bePort = (parseInt(process.env.BE_PORT) || 8443)
-server = module.exports = express();
+    flash = require('connect-flash'),
+    httpProxy = require('http-proxy'),
+    server = module.exports = express();
 
-// SERVER CONFIGURATION
-// ====================
 server.configure(function() {
 
-  server.use(express["static"](__dirname + "/../public"));
+    server.use(express["static"](__dirname + "/../public"));
 
-  server.use(express.errorHandler({
+    server.use(express.errorHandler({
+        dumpExceptions: true,
+        showStack: true
+    }));
 
-    dumpExceptions: true,
+    // Proxy to forward api calls
+    var proxy = new httpProxy.RoutingProxy();
 
-    showStack: true
+    var apiProxy = function(host, port) {
+        return function(req, res, next) {
+            if (req.url.match(new RegExp('^\/api\/v1\/'))) {
+                req.url = req.url.replace(/^\/api\/v1\//, "/");
+                proxy.proxyRequest(req, res, {
+                    host: host,
+                    port: port
+                });
+            } else {
+                next();
+            }
+        };
+    };
 
-  }));
+    server.use(apiProxy('localhost', 8004));
+    server.use(express.bodyParser());
+    server.use(server.router);
 
-
-  // Proxy to forward api calls
-  var proxy = new httpProxy.RoutingProxy();
-
-  function apiProxy(host, port) {
-    return function(req, res, next) {
-      if (req.url.match(new RegExp('^\/api\/'))) {
-        proxy.proxyRequest(req, res, {
-          host: host,
-          port: port
-        });
-      } else {
-        next();
-      }
+    // development only
+    if ('development' == server.get('env')) {
+        server.use(express.errorHandler());
     }
-  };
 
-  var passport = require('passport'),
-  LocalStrategy = require('passport-local').Strategy,
-  users = [{
-    id: 1,
-    username: 'lujooo',
-    password: 'legend',
-    email: 'bob@example.com'
-  }];
-
-  function findById(id, fn) {
-    var idx = id - 1;
-    if (users[idx]) {
-      fn(null, users[idx]);
-    } else {
-      fn(new Error('User ' + id + ' does not exist'));
-    }
-  };
-
-  function findByUsername(username, fn) {
-    for (var i = 0, len = users.length; i < len; i++) {
-      var user = users[i];
-      if (user.username === username) {
-        return fn(null, user);
-      }
-    }
-    return fn(null, null);
-  };
-
-  // Simple route middleware to ensure user is authenticated.
-  //   Use this route middleware on any resource that needs to be protected.  If
-  //   the request is authenticated (typically via a persistent login session),
-  //   the request will proceed.  Otherwise, the user will be redirected to the
-  //   login page.
-  function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect('/login')
-  }
-
-  // Passport session setup.
-  //   To support persistent login sessions, Passport needs to be able to
-  //   serialize users into and deserialize users out of the session.  Typically,
-  //   this will be as simple as storing the user ID when serializing, and finding
-  //   the user by ID when deserializing.
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
-
-  // Use the LocalStrategy within Passport.
-  //   Strategies in passport require a `verify` function, which accept
-  //   credentials (in this case, a username and password), and invoke a callback
-  //   with a user object.  In the real world, this would query a database;
-  //   however, in this example we are using a baked-in set of users.
-  passport.use(new LocalStrategy(
-    function(username, password, done) {
-      // asynchronous verification, for effect...
-      process.nextTick(function() {
-
-        // Find the user by username.  If there is no user with the given
-        // username, or the password is not correct, set the user to `false` to
-        // indicate failure and set a flash message.  Otherwise, return the
-        // authenticated `user`.
-        findByUsername(username, function(err, user) {
-          if (err) {
-            return done(err);
-          }
-          if (!user) {
-            return done(null, false, {
-              message: 'Unknown user ' + username
-            });
-          }
-          if (user.password != password) {
-            return done(null, false, {
-              message: 'Invalid password'
-            });
-          }
-          return done(null, user);
-        })
-      });
-    }
-    ));
-
-  server.use(apiProxy(beHost, bePort));
-  server.use(express.bodyParser());
-  server.use(express.cookieParser('q1w2e3r4'));
-  server.use(express.logger());
-  server.use(flash());
-  server.use(express.methodOverride());
-  server.use(express.session({
-    secret: 'q1w2e3r4'
-  }));
-  server.use(passport.initialize());
-  server.use(passport.session());
-  server.use(server.router);
-
-  server.post('/login',
-    passport.authenticate('local', {
-      failureRedirect: '/#login',
-      failureFlash: true
-    }),
-    function(req, res) {
-      res.redirect('/#home');
-    });
 });
 
 
 // SERVER
 // ======
 // Start Node.js Server
-server.listen(port);
+server.listen(8003);
 
-console.log('Welcome to Backbone-Require-Boilerplate!\n\nPlease go to http://localhost:' + port + ' to start using Require.js and Backbone.js');
+console.log('Please go to http://localhost:8003 to run demo');

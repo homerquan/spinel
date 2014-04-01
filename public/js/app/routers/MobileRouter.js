@@ -1,10 +1,10 @@
 // MobileRouter.js
 // ---------------
-define(["jquery", "backbone", "models/Model", "views/View", "collections/Collection"],
+define(["jquery", "backbone",  "./BaseRouter", "models/Model", "views/View", "collections/Collection"],
         
-    function($, Backbone, UserModel, View, Collection) {
+    function($, Backbone, BaseRouter, UserModel, View, Collection) {
 
-        var MobileRouter = Backbone.Router.extend({
+        var MobileRouter = BaseRouter.extend({
 
             initialize: function() {
 

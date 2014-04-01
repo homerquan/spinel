@@ -2,80 +2,81 @@
 // -------------------------
 require.config({
 
-  // Sets the js folder as the base directory for all future relative paths
-  baseUrl: "./js/app",
+    // Sets the js folder as the base directory for all future relative paths
+    baseUrl: "./js/app",
 
-  // 3rd party script alias names (Easier to type "jquery" than "libs/jquery, etc")
-  // probably a good idea to keep version numbers in the file names for updates checking
-  paths: {
+    // 3rd party script alias names (Easier to type "jquery" than "libs/jquery, etc")
+    // probably a good idea to keep version numbers in the file names for updates checking
+    paths: {
 
-      // Core Libraries
-      // --------------
-      "jquery": "../libs/jquery",
+        // Core Libraries
+        // --------------
+        "jquery": "../libs/jquery",
 
-      "jqueryui": "../libs/jqueryui",
+        "jqueryui": "../libs/jqueryui",
 
-      "jquerymobile": "../libs/jquery.mobile",
+        "jquerymobile": "../libs/jquery.mobile",
 
-      "underscore": "../libs/lodash",
+        "underscore": "../libs/lodash",
 
-      "backbone": "../libs/backbone",
+        "backbone": "../libs/backbone",
 
-      "handlebars": "../libs/handlebars",
+        "handlebars": "../libs/handlebars",
 
-      // Plugins
-      // -------
-      "jquerypubsub": "../libs/plugins/jquery.pubsub",
+        // Plugins
+        // -------
 
-      "backbone.validateAll": "../libs/plugins/Backbone.validateAll",
+        "backbone.validateAll": "../libs/plugins/Backbone.validateAll",
 
-      "bootstrap": "../libs/plugins/bootstrap",
+        "bootstrap": "../libs/plugins/bootstrap",
 
-      "text": "../libs/plugins/text",
+        "text": "../libs/plugins/text",
 
-      "jasminejquery": "../libs/plugins/jasmine-jquery"
+        "jasminejquery": "../libs/plugins/jasmine-jquery",
 
-  },
+        "pnotify": "../libs/plugins/jquery.pnotify"
 
-  // Sets the configuration for your third party scripts that are not AMD compatible
-  shim: {
+    },
 
-      // jQuery Mobile
-      "jquerymobile": ["jquery"],
+    // Sets the configuration for your third party scripts that are not AMD compatible
+    shim: {
 
-      // Twitter Bootstrap jQuery plugins
-      "bootstrap": ["jquery"],
+        // jQuery Mobile
+        "jquerymobile": ["jquery"],
 
-      // jQueryUI
-      "jqueryui": ["jquery"],
+        // Twitter Bootstrap jQuery plugins
+        "bootstrap": ["jquery"],
 
-      // JQuery PubSub
-      "jquerypubsub" : ["jquery"],
+        // jQueryUI
+        "jqueryui": ["jquery"],
 
-      // Backbone
-      "backbone": {
+        // Backbone
+        "backbone": {
 
-        // Depends on underscore/lodash and jQuery
-        "deps": ["underscore", "jquery"],
+            // Depends on underscore/lodash and jQuery
+            "deps": ["underscore", "jquery"],
 
-        // Exports the global window.Backbone object
-        "exports": "Backbone"
+            // Exports the global window.Backbone object
+            "exports": "Backbone"
 
-      },
+        },
 
-      // Handlebars
-      "handlebars": {
+        // Notification
+        "pnotify": ['jquery'],
 
-        "exports": "Handlebars"
+        // Handlebars
+        "handlebars": {
 
-      },
+            "exports": "Handlebars"
 
-      // Backbone.validateAll plugin that depends on Backbone
-      "backbone.validateAll": ["backbone"],
+        },
 
-      // Jasmine-jQuery plugin
-      "jasminejquery": ["jquery"]
+        // Backbone.validateAll plugin that depends on Backbone
+        "backbone.validateAll": ["backbone"],
 
-  }
+        // Jasmine-jQuery plugin
+        "jasminejquery": ["jquery"]
+
+    }
 
 });

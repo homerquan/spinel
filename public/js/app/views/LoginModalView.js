@@ -1,7 +1,7 @@
 // LoginModalView.js
 // -------
 define(["jquery", "backbone", "handlebars",
-        "./BaseView", "text!templates/login_page.handlebars"
+        "./BaseView", "text!templates/login_modal.handlebars"
     ],
 
     function($, Backbone, Handlebars, BaseView, template) {
@@ -9,13 +9,14 @@ define(["jquery", "backbone", "handlebars",
         var View = BaseView.extend({
 
             // The DOM Element associated with this view
-            el: "#page-container",
+            el: "#overlay-container",
             template: Handlebars.compile(template),
 
             // View Event Handlers
             events: {
                 "click #btn-signin": "signin",
-                "click #btn-signup": "signup"
+                "click #btn-signup": "signup",
+                "click button.close": "close"
             },
 
             // Renders the view's template to the UI
@@ -29,8 +30,16 @@ define(["jquery", "backbone", "handlebars",
                 e.preventDefault();
                 var name = this.$('#username').val();
                 var pass = this.$('#password').val();
-                this.session.login(name, pass);
+                this.session.set("redirectFrom", Backbone.history.fragment);
+                this.session.login(name, pass, function() {
+                    this.clear();
+                }.bind(this));
+            },
+
+            close: function() {
+                this.clear();
             }
+
         });
 
         // Returns the View class

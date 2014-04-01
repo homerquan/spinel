@@ -2,13 +2,14 @@
 // --------------
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
-require(["jquery", "backbone", "routers/DesktopRouter", "jqueryui", "jquerypubsub", "bootstrap", "backbone.validateAll"],
+// load pnotify to jquery
+require(["jquery", "backbone", "routers/DesktopRouter", "bootstrap", "backbone.validateAll", "pnotify"],
 
-  function($, Backbone, DesktopRouter) {
+    function($, Backbone, DesktopRouter) {
 
-    // Instantiates a new Desktop Router instance
-    new DesktopRouter();
+        // Instantiates a new Desktop Router instance
+        new DesktopRouter();
 
-  }
+    }
 
 );
