@@ -2,7 +2,7 @@
 ======
 Spinel: A fast web MVC framework based on BRB
 
-Still documenting how to use it, please be patient ...
+(Still documenting how to use it, please be patient)
 
 Features includes:
 - Backbone
