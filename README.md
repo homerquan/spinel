@@ -1,4 +1,5 @@
-Spinel
+Spinel 
+![alt tag](http://spirtfire.com/res/img/spinel.png)
 ======
 
 A fast web MVC framework based on BRB
@@ -10,4 +11,3 @@ Features includes:
 - PubSub
 - Base Class and Mixins for model, view, router
 - pnotify
-- ... and more
