@@ -9,4 +9,6 @@ Features includes:
 - PubSub
 - Less
 - Base Class and Mixins for model, view, router
-- pnotify
+- Session management
+- Login (both page or modal), register
+- notification
