@@ -4,13 +4,15 @@ Spinel: A fast web MVC framework based on BRB
 
 (Still documenting how to use it, please be patient)
 
-Features includes:
+Features include:
 - Backbone
 - requirejs
+- Bootstrap 3.x
 - handlebars
 - PubSub
 - Less
-- Base Class and Mixins for model, view, router
+- Base Class and Mixins
 - Session management
-- Login (both page or modal), register
+- Out of box login (both page or modal), register
+- Out of box query suggestion, search result
 - notification
