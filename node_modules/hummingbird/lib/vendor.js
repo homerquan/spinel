@@ -1,1 +1,0 @@
-diacritics = require('diacritics');
