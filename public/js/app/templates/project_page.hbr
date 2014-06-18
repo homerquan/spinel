@@ -1,0 +1,181 @@
+<!--only use in development for mockup-->
+<script src="js/libs/plugins/holder.js"></script>
+<script src="js/libs/plugins/lorem.js"></script>
+<script src="js/libs/plugins/bootstrap-tags.js"></script>
+<link href="css/bootstrap-tags.css" media="all" rel="stylesheet" type="text/css" />
+<!--end mockup-->
+<div class="container" data-role="content">
+	<div class="project-cover-image" style="background:url('http://ajarnjoshua.com/wp-content/uploads/2013/12/quadcopter-drone.jpg')"></div>
+	<div class="row">
+		<div class="col-xs-12 col-md-6">
+			<img src="holder.js/120x120" class="img-circle" style="float: left; margin: 10px">
+			<div class="big-profile-card">
+				<h3>Person or Corp name</h4>
+				<h4>Location, university or industry</h4>
+				<div class="sponsor-card" style=""> Sponsed by Toogle </div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<div class="big-monters-card">
+				<ul class="list-inline">
+					<li><img src="holder.js/60x60" class="img-circle" style="float: left"><div>some name</div></li>
+					<li><img src="holder.js/60x60" class="img-circle" style="float: left"><div>some name</div></li>
+					<li><img src="holder.js/60x60" class="img-circle" style="float: left"><div>some name</div></li>
+					<li><img src="holder.js/60x60" class="img-circle" style="float: left"><div>some name</div></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<hr class="fancy-line"/>
+	</div>
+	<div class="row" style="background: white;">
+		<div class="col-xs-12 col-md-6">
+		    <div class="row">
+            <img src="img/mockup/mock_project_post.png" style="
+    width: 450px; padding: 5px"></img>
+		    </div>
+			<div class="row" style=" margin: 0px 15px;">
+				<div class="span8">
+					<div class="row">
+						<div class="span8">
+							<h4><strong><a href="#">Update title</a></strong></h4>
+						</div>
+					</div>
+					<div class="row">
+						<img src="holder.js/60x60" alt="" style="float:left;margin:5px;">
+						<p data-lorem="3s"></p>
+					</div>
+					<div class="row">
+						<div>
+							<p>
+							<i class="icon-user"></i> by <a href="#">Mark</a>
+							| <i class="icon-calendar"></i> Sept 16th, 2012
+							| <i class="icon-comment"></i> <a href="#">3 Comments</a>
+							| <i class="icon-share"></i> <a href="#">39 Shares<a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style=" margin: 0px 15px;">
+				<div class="span8">
+					<div class="row">
+						<div class="span8">
+							<h4><strong><a href="#">Update title</a></strong></h4>
+						</div>
+					</div>
+					<div class="row">
+						<img src="holder.js/60x60" alt="" style="float:left;margin:5px;">
+						<p data-lorem="3s"></p>
+					</div>
+					<div class="row">
+						<div>
+							<p>
+							<i class="icon-user"></i> by <a href="#">Mark</a>
+							| <i class="icon-calendar"></i> Sept 16th, 2012
+							| <i class="icon-comment"></i> <a href="#">3 Comments</a>
+							| <i class="icon-share"></i> <a href="#">39 Shares<a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style=" margin: 0px 15px;">
+				<div class="span8">
+					<div class="row">
+						<div class="span8">
+							<h4><strong><a href="#">Update title</a></strong></h4>
+						</div>
+					</div>
+					<div class="row">
+						<img src="holder.js/60x60" alt="" style="float:left;margin:5px;">
+						<p data-lorem="3s"></p>
+					</div>
+					<div class="row">
+						<div>
+							<p>
+							<i class="icon-user"></i> by <a href="#">Mark</a>
+							| <i class="icon-calendar"></i> Sept 16th, 2012
+							| <i class="icon-comment"></i> <a href="#">3 Comments</a>
+							| <i class="icon-share"></i> <a href="#">39 Shares<a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style=" margin: 0px 15px;">
+				<div class="span8">
+					<div class="row">
+						<div class="span8">
+							<h4><strong><a href="#">Update title</a></strong></h4>
+						</div>
+					</div>
+					<div class="row">
+						<img src="holder.js/60x60" alt="" style="float:left;margin:5px;">
+						<p data-lorem="3s"></p>
+					</div>
+					<div class="row">
+						<div>
+							<p>
+							<i class="icon-user"></i> by <a href="#">Mark</a>
+							| <i class="icon-calendar"></i> Sept 16th, 2012
+							| <i class="icon-comment"></i> <a href="#">3 Comments</a>
+							| <i class="icon-share"></i> <a href="#">39 Shares<a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style=" margin: 0px 15px;">
+				<div class="span8">
+					<div class="row">
+						<div class="span8">
+							<h4><strong><a href="#">Update title</a></strong></h4>
+						</div>
+					</div>
+					<div class="row">
+						<img src="holder.js/60x60" alt="" style="float:left;margin:5px;">
+						<p data-lorem="3s"></p>
+					</div>
+					<div class="row">
+						<div>
+							<p>
+							<i class="icon-user"></i> by <a href="#">Mark</a>
+							| <i class="icon-calendar"></i> Sept 16th, 2012
+							| <i class="icon-comment"></i> <a href="#">3 Comments</a>
+							| <i class="icon-share"></i> <a href="#">39 Shares<a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<div class="row">
+				<div class="relatd-skills">
+					<h1>Related skills</h1>
+					<div class="tag label btn-info md">
+						<span>Critical thinking</span>
+					</div>
+					<div class="tag label btn-info md">
+						<span>Android OS</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="similar-projects">
+					<h1>Similar projects</h1>
+					<ul class="list-unstyled">
+						<li data-lorem="2s"></li>
+						<li data-lorem="2s"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>

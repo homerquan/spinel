@@ -1,0 +1,14 @@
+{
+	"PORT": 8001,
+	"API_HOST": "localhost",
+	"API_PORT": 8002,
+	"AUTH_HOST": "localhost",
+	"AUTH_PORT": 8003,
+	"COOKIE_PASS": "anystringhere",
+	"REDIS_HOST": "localhost",
+	"REDIS_PORT": "6379",
+	"REDIS_PASS": "",
+	"REDIS_SESSION_DB": "wt_session",
+	"OAUTH_CLIENT_ID": "trustedClient",
+	"OAUTH_CLIENT_SECRET": "ssh-otherpassword"
+}

@@ -1,0 +1,24 @@
+<div class="container-fluid">
+	<div class="row">
+		<div id="creativity-graph-container" class="col-xs-12 col-md-8 no-space-helper">
+		</div>
+		<div class="col-xs-12 col-md-2">
+		    <h3 id="topic-hash"></h3>
+			<div id="topic-contents-container" class="topic-info">
+			</div>
+			<div id="topic-couses-container"  class="topic-info">
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-2">
+			<div id="topic-acadamy-container" class="topic-info">
+			</div>
+			<div id="topic-industry-container" class="topic-info">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="top-right-control">
+	<a id="close-overcanvas">
+	<i class="fa fa-times-circle"></i>
+	</a>
+</div>

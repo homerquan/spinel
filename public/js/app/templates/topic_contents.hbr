@@ -1,0 +1,6 @@
+<h4>Suggest Reading</h4>
+<ul class="list-unstyled">
+    {{#each .}}
+        <li>{{name}}</li>
+    {{/each}}
+</ul>

@@ -1,0 +1,11 @@
+<form class="navbar-form navbar-left relative-helper" role="search">
+        <label class="sr-only" for="query-input">Search query</label>
+        <input id="query-input" type="text" class="form-control" placeholder="Search">
+       </input>
+       <button id="search-query" type="submit" class="fa fa-search nav-search">
+        <span class="sr-only">    
+          Search
+        </span>
+      </button>
+</form>
+<div id="suggestion-results" class="nav-suggestion-container container"></div>

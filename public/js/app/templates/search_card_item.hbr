@@ -1,0 +1,71 @@
+<div class="col-md-6 col-xs-12 right-line">
+	<div class="search-card-left">
+		<div class="relative-helper">
+			<img class="search-card-image" src="{{image}}"></img>
+			<div class="search-card-title">
+				<h4>{{title}}</h4>
+				{{#if sponsor}}
+				<h5 class="search-card-sponser"> Sponsored by <strong>{{sponsor}}</strong></h5>
+				{{/if}}
+			</div>
+			<div class="search-card-info">
+				<p class="search-card-desc">{{description}}</p>
+				<div class="search-card-action">
+				{{#if topics}}
+				   {{#each topics}}
+                    <div class="tag label btn-info md" data-topic-id="{{id}}" data-topic-name="{{name}}">
+						<span>{{name}}</span>
+					</div>
+                  {{/each}}
+				{{/if}}
+
+					<button type="button" class="btn btn-default btn-lg work-on-project" data-project-id="{{id}}">
+					<i class="fa fa-pencil"></i>Work on it
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="search-card-social relative-helper">
+			<div>
+				<i class="fa fa-arrow-up"></i>
+				<span class="badge">{{voteCount}}</span><br/>
+				<i class="fa fa-arrow-down"></i>
+			</div>
+			<div class="top-right-helper">
+				<i class="fa fa-eye">{{followerCount}}</i>
+				<i class="fa fa-star">{{favoriteCount}}</i>
+				<i class="fa fa-facebook-square"></i>
+				<i class="fa fa-twitter-square"></i>
+				<i class="fa fa-linkedin-square"></i>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div class="col-md-6 col-xs-12 left-line">
+	<div class="search-card-right">
+		<ul class="nav nav-pills">
+			{{#each mentors}}
+			<li class="search-card-mentor">
+				<img src="{{avatar}}" class="avatar img-circle">
+				<div><strong>{{name}}</strong></div>
+				<div><i>{{title}}</i></div>
+			</li>
+			{{/each}}
+		</ul>
+		<hr class="fancy-line"></hr>
+		<ul class="nav nav-stacked">
+			{{#each solutions}}
+			<li class="search-card-solution">
+				<img src="{{avatar}}" class="avatar img-circle">
+				<quote>{{review}}</quote>
+				<div class='solution-info'>
+					<strong>by {{name}}</strong>
+					<span class="star-ratings" title="{{rate}}"></span>
+				</div>
+			</li>
+			{{/each}}
+		</ul>
+		<div class="search-card-related"></div>
+	</div>
+</div>
