@@ -26,15 +26,21 @@ require.config({
         // Plugins
         // -------
 
-        "backbone.validateAll": "../libs/plugins/Backbone.validateAll",
+        "backbone.validateAll": "../libs/plugins/backbone.validateAll",
+
+        "backbone.forms": "../libs/plugins/backbone.forms",
 
         "bootstrap": "../libs/plugins/bootstrap",
 
         "text": "../libs/plugins/text",
 
+        "arbor": "../libs/plugins/arbor",
+
         "jasminejquery": "../libs/plugins/jasmine-jquery",
 
-        "pnotify": "../libs/plugins/jquery.pnotify"
+        "pnotify": "../libs/plugins/jquery.pnotify",
+
+        "cookie": "../libs/plugins/jquery.cookie"
 
     },
 
@@ -61,8 +67,17 @@ require.config({
 
         },
 
+        // Arbor graph viz lib
+        "arbor": {
+            "deps": ["jquery"],
+            "exports": "arbor"
+        },
+
         // Notification
         "pnotify": ['jquery'],
+
+        // Jquery cookie
+        "cookie": ['jquery'],
 
         // Handlebars
         "handlebars": {

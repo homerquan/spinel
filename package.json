@@ -26,15 +26,35 @@
         "MVC",
         "Boilerplate"
     ],
-    "devDependencies": {
-        "express": "3.x",
+    "engines": {
+        "node": "0.10.x",
+        "npm": "1.4.x"
+    },
+    "dependencies": {
+        "express": "4.3.x",
         "underscore": "1.5.x",
         "http-proxy": "~0.10.3",
+        "connect-flash": "0.1.x",
+        "connect-redis": "1.x",
+        "express-session": "1.x",
+        "body-parser": "1.2.x",
+        "cookie-parser": "1.1.x",
+        "method-override": "1.0.x",
+        "errorhandler": "1.0.x",
+        "passport": "0.2.x",
+        "passport-facebook": "1.0.x",
+        "hummingbird": "0.x",
+        "serve-favicon": "0.2.x"
+    },
+    "devDependencies": {
+        "morgan": "1.1.x",
+        "blanket": "1.1.x",
         "grunt": "~0.4.1",
         "grunt-contrib-requirejs": "~0.4.0",
         "grunt-contrib-jshint": "~0.3.0",
-        "uglify-js": "~2.2.5",
-        "connect-flash": "0.1.x",
-        "connect-redis": "1.x"
+        "grunt": "~0.4.1",
+        "grunt-contrib-less": "~0.5.0",
+        "grunt-contrib-watch": "~0.4.0",
+        "uglify-js": "~2.2.5"
     }
 }

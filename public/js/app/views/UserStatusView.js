@@ -1,9 +1,8 @@
 define(["jquery", "backbone", "./BaseView",
-        "./LoginModalView",
-        "text!templates/login_user_status.handlebars", "text!templates/anonymous_user_status.handlebars"
+        "text!templates/login_user_status.hbr", "text!templates/anonymous_user_status.hbr"
     ],
 
-    function($, Backbone, BaseView, LoginModalView, loginTemplate, anonymousTemplate) {
+    function($, Backbone, BaseView, loginTemplate, anonymousTemplate) {
 
         var View = BaseView.extend({
 
@@ -23,7 +22,7 @@ define(["jquery", "backbone", "./BaseView",
                 "click #user-signin": "signin",
                 "click #user-signup": "signup",
                 "click #user-logout": "logout",
-                "click #toggle-db": "dashboardToggle",
+                "click #toggle-db": "dashboardToggle"
             },
 
             render: function() {
@@ -31,14 +30,14 @@ define(["jquery", "backbone", "./BaseView",
                     this.$el.html(this.loginTemplate(this.session.get('userProfile')));
                 } else {
                     this.$el.html(this.anonymousTemplate());
-                };
+                }
                 return this;
             },
 
             signin: function() {
-                new LoginModalView({
-                    session: this.session
-                }).render();
+                Backbone.history.navigate('login', {
+                    trigger: true
+                });
             },
 
             signup: function() {

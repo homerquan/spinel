@@ -1,9 +1,75 @@
 @import "variables";
+@import "mixins";
+@import "helpers";
+@import "elements";
+@import "layout";
+@import "header";
+@import "search-results";
+@import "query-suggestions";
+@import "dashboard";
+@import "project";
+
 
 body {
   background-image: url('../img/background.png');
 }
 
+.splash-container {
+  padding: 0px;
+  margin-top: -20px;
+  position: relative;
+  .splash{
+    position: absolute;
+    background: #1FB2F9;
+    top: 25px;
+    right: 0px;
+    padding: 5px 35px;
+    h1{
+      font-size: 300%;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 100;
+    }
+    h2{
+      color: white;
+      font-weight: 200;
+      font-size: 150%;
+    }
+    a{
+      background: white;
+      color: #1FB2F9;
+      padding: 10px;
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+  }
+}
+.market-content {
+  padding: 0px 25px 40px 25px;
+  background: white;
+  position: fixed;
+  bottom: 00px;
+  .content-head {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 2em 0 1em;
+    font-size: 180%;
+  }
+  .content-subhead{
+    color: #1f8dd6;
+    font-size: 150%;
+    height: 80px;
+  }
+  p{
+      color: #7f8c8d;
+      font-size: 125%;
+  }
+}
 #page-container {
   margin-top: 20px;
 }
@@ -63,56 +129,5 @@ hr.fancy-line:after {
     color: black;
 }
 
-.no-space-helper {
-  margin: 0px;
-  padding: 0px;
-}
 
-.star-ratings {
-  unicode-bidi: bidi-override;
-  color: #c5c5c5;
-  font-size: 15px;
-  height: 15px;
-  width: 60px;
-  position: relative;
-} 
-.star-ratings::before { 
-  content: '★★★★';
-  opacity: .3;
-}
 
-[title="1"]::after {
-  width: 0%;
-}
-[title="2"]::after {
-  width: 12.5%;
-}
-[title="3"]::after {
-  width: 25%;
-}
-[title="4"]::after {
-  width: 37.5%;
-}
-[title="5"]::after {
-  width: 50%;
-}
-[title="6"]::after {
-  width: 62.5%;
-}
-[title="7"]::after {
-  width: 75%;
-}
-[title="8"]::after {
-  width: 87.5%;
-}
-.star-ratings::after {
-  color: gold;
-  content: '★★★★';
-  position: absolute;
-  z-index: 1;
-  display: block;
-  left: 0;
-  top:0;
-  width: attr(rating);
-  overflow: hidden;
-}

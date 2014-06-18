@@ -1,8 +1,8 @@
 // MobileRouter.js
 // ---------------
-define(["jquery", "backbone",  "./BaseRouter", "models/Model", "views/View", "collections/Collection"],
-        
-    function($, Backbone, BaseRouter, UserModel, View, Collection) {
+define(["jquery", "backbone", "./BaseRouter", "views/HomePageView"],
+
+    function($, Backbone, BaseRouter, View) {
 
         var MobileRouter = BaseRouter.extend({
 
@@ -15,7 +15,7 @@ define(["jquery", "backbone",  "./BaseRouter", "models/Model", "views/View", "co
 
             // All of your Backbone Routes (add more)
             routes: {
-                
+
                 // When there is no hash bang on the url, the home method is called
                 "": "index"
 
@@ -27,7 +27,7 @@ define(["jquery", "backbone",  "./BaseRouter", "models/Model", "views/View", "co
                 new View();
 
             }
-    
+
         });
 
         // Returns the MobileRouter class

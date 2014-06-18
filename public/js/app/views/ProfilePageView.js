@@ -3,7 +3,7 @@
 // or other's specified by id
 // -------
 define(["jquery", "backbone", "handlebars",
-        "./BaseView", "text!templates/profile_page.handlebars"
+        "./BaseView", "text!templates/profile_page.hbr"
     ],
 
     function($, Backbone, Handlebars, BaseView, template) {

@@ -1,6 +1,13 @@
 .relative-helper {
   position: relative;
 }
+.text-center {
+  text-align: center;
+}
+.no-space-helper {
+  margin: 0px;
+  padding: 0px;
+}
 #page-container #find-input {
   font-size: 300%;
   height: 300%;
@@ -10,14 +17,21 @@
   margin-right: 4px;
 }
 .app-logo {
+  background: url('../img/spinel-logo.png');
   height: 50px;
-  width: 50px;
+  width: 150px;
   background-size: 40px 40px;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: 0% 50%;
 }
-#find-input {
+.app-logo span {
+  color: #1FB2F9;
+  font-size: 150%;
+  margin-left: 30px;
+}
+#query-input {
   padding: 5px 27px 6px 12px;
+  width: 300px;
 }
 .profile-icon {
   height: 30px;
@@ -51,6 +65,9 @@
   top: 54px;
   z-index: 20;
   background: white;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .left-line {
   border-left: solid 3px #dddddd;
@@ -188,6 +205,81 @@
   height: 40px;
   margin-right: 10px;
 }
+.star-ratings {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 15px;
+  height: 15px;
+  width: 60px;
+  position: relative;
+}
+.star-ratings::before {
+  content: '★★★★';
+  opacity: .3;
+}
+[title="1"]::after {
+  width: 0%;
+}
+[title="2"]::after {
+  width: 12.5%;
+}
+[title="3"]::after {
+  width: 25%;
+}
+[title="4"]::after {
+  width: 37.5%;
+}
+[title="5"]::after {
+  width: 50%;
+}
+[title="6"]::after {
+  width: 62.5%;
+}
+[title="7"]::after {
+  width: 75%;
+}
+[title="8"]::after {
+  width: 87.5%;
+}
+.star-ratings::after {
+  color: gold;
+  content: '★★★★';
+  position: absolute;
+  z-index: 1;
+  display: block;
+  left: 0;
+  top: 0;
+  width: attr(rating);
+  overflow: hidden;
+}
+.query-suggestions {
+  margin: 5px 0px;
+  padding-top: 5px;
+}
+.query-suggestions h5 {
+  margin: 0px;
+  text-align: right;
+  color: #1f8dd6;
+  font-size: 125%;
+  font-weight: bold;
+}
+.query-suggestions li {
+  margin-bottom: 5px;
+}
+.query-suggestions .title {
+  color: #1f8dd6;
+  font-size: 150%;
+}
+.query-suggestions .sponsor {
+  color: #dddddd;
+}
+.query-suggestions .description {
+  color: #999999;
+}
+.query-suggestions img {
+  float: left;
+  margin-right: 10px;
+}
 #overcanvas-container {
   background: black;
   height: 0px;
@@ -256,6 +348,61 @@
 body {
   background-image: url('../img/background.png');
 }
+.splash-container {
+  padding: 0px;
+  margin-top: -20px;
+  position: relative;
+}
+.splash-container .splash {
+  position: absolute;
+  background: #1FB2F9;
+  top: 25px;
+  right: 0px;
+  padding: 5px 35px;
+}
+.splash-container .splash h1 {
+  font-size: 300%;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 100;
+}
+.splash-container .splash h2 {
+  color: white;
+  font-weight: 200;
+  font-size: 150%;
+}
+.splash-container .splash a {
+  background: white;
+  color: #1FB2F9;
+  padding: 10px;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.market-content {
+  padding: 0px 25px 40px 25px;
+  background: white;
+  position: fixed;
+  bottom: 00px;
+}
+.market-content .content-head {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
+  font-size: 180%;
+}
+.market-content .content-subhead {
+  color: #1f8dd6;
+  font-size: 150%;
+  height: 80px;
+}
+.market-content p {
+  color: #7f8c8d;
+  font-size: 125%;
+}
 #page-container {
   margin-top: 20px;
 }
@@ -311,55 +458,4 @@ hr.fancy-line:after {
 }
 .cp a .cp-number {
   color: black;
-}
-.no-space-helper {
-  margin: 0px;
-  padding: 0px;
-}
-.star-ratings {
-  unicode-bidi: bidi-override;
-  color: #c5c5c5;
-  font-size: 15px;
-  height: 15px;
-  width: 60px;
-  position: relative;
-}
-.star-ratings::before {
-  content: '★★★★';
-  opacity: .3;
-}
-[title="1"]::after {
-  width: 0%;
-}
-[title="2"]::after {
-  width: 12.5%;
-}
-[title="3"]::after {
-  width: 25%;
-}
-[title="4"]::after {
-  width: 37.5%;
-}
-[title="5"]::after {
-  width: 50%;
-}
-[title="6"]::after {
-  width: 62.5%;
-}
-[title="7"]::after {
-  width: 75%;
-}
-[title="8"]::after {
-  width: 87.5%;
-}
-.star-ratings::after {
-  color: gold;
-  content: '★★★★';
-  position: absolute;
-  z-index: 1;
-  display: block;
-  left: 0;
-  top: 0;
-  width: attr(rating);
-  overflow: hidden;
 }

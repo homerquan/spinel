@@ -1,17 +1,27 @@
 // HomePageView.js
 // -------
 define(["jquery", "backbone", "handlebars",
-        "./BaseView", "text!templates/home_page.handlebars"
+        "./BaseView", "views/SearchCardsView",
+        "text!templates/login_home_page.hbr",
+        "text!templates/anonymous_home_page.hbr"
     ],
 
-    function($, Backbone, Handlebars, BaseView, template) {
+    function($, Backbone, Handlebars, BaseView,
+        SearchCardsView, loginTemplate, anonymousTemplate) {
 
         var View = BaseView.extend({
 
             // The DOM Element associated with this view
             el: "#page-container",
-            template: Handlebars.compile(template),
+            loginTemplate: Handlebars.compile(loginTemplate),
+            anonymousTemplate: Handlebars.compile(anonymousTemplate),
 
+            initialize: function(context) {
+                _.extend(this, context);
+                if (this.session) {
+                    this.session.bind('change', this.render, this);
+                }
+            },
             // View Event Handlers
             events: {
 
@@ -20,10 +30,11 @@ define(["jquery", "backbone", "handlebars",
             // Renders the view's template to the UI
             render: function() {
 
-                // Render Layout
-                this.$el.html(this.template());
-
-                // Maintains chainability
+                if (this.session && this.session.isLogin()) {
+                    this.$el.html(this.loginTemplate(this.session.get('userProfile')));
+                } else {
+                    this.$el.html(this.anonymousTemplate());
+                }
                 return this;
             }
 

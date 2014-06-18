@@ -14,10 +14,25 @@ define(["jquery", "backbone", "./BaseModel"],
 
             // Model Constructor
             initialize: function() {
+                //if not login, try auth via A cookie
+                if (!this.isLogin()) {
+                    var refreshToken = $.cookie('A');
+                    if (refreshToken) {
+                        this.login({
+                            refresh_token: refreshToken
+                        }, 'refresh');
+                    }
+                }
+                $.ajaxSetup({
+                    headers: {
+                        'Authorization': this.getAuthToken()
+                    }
+                });
+
                 //Check for sessionStorage support
                 if (Storage && sessionStorage) {
                     this.supportStorage = true;
-                };
+                }
             },
 
             // Default values for all of the Model attributes
@@ -27,10 +42,11 @@ define(["jquery", "backbone", "./BaseModel"],
                 userId: null,
                 userProfile: null,
                 sessionId: null,
+                rememberAuth: false
             },
 
             isLogin: function() {
-                return Boolean(this.get('authenticated'));
+                return Boolean(this.get('accessToken'));
             },
 
             get: function(key) {
@@ -69,26 +85,64 @@ define(["jquery", "backbone", "./BaseModel"],
                     sessionStorage.clear();
                 } else {
                     Backbone.Model.prototype.clear(this);
-                };
+                }
                 this.trigger('change');
             },
 
-            login: function(name, pass, cb) {
-                var credentials = {
-                    username: name,
-                    password: pass
-                };
+            getAuthToken: function() {
+                if (!this.get('accessToken') || !this.get('tokenType'))
+                    return null;
+                else
+                    return this.get('tokenType') + ' ' + this.get('accessToken');
+            },
+            /*
+             * Login in either username/password or refreshToken
+             * @credentials either username/password or refresh token (required)
+             * @param type of login [login|refresh] (required)
+             */
+            login: function(credentials, type, cb) {
+                if (credentials.remember) {
+                    this.rememberAuth = true;
+                }
                 var that = this;
                 var login = $.ajax({
-                    url: that.getUrl('login'),
+                    url: that.getUrl(type),
                     data: credentials,
                     type: 'POST'
                 });
                 login.done(function(response) {
-                    that.set('authenticated', true);
-                    that.set('userId', response.userId);
-                    that.set('sessionId', response.sessionId);
-                    that.set('userProfile', JSON.stringify(response.userProfile));
+                    that.set('accessToken', response.access_token);
+                    that.set('refreshToken', response.refresh_token);
+                    that.set('tokenType', response.token_type);
+                    that.set('expiresIn', response.expires_in);
+                    if (that.rememberAuth) {
+                        $.cookie("A", response.refresh_token, {
+                            expires: 1
+                        });
+                    }
+                    // add authorization header on all ajax calls
+                    $.ajaxSetup({
+                        headers: {
+                            'Authorization': that.getAuthToken()
+                        }
+                    });
+
+                    // if "remember me" in login, save auth data into cookie
+                    // when init session, load them from cookie
+                    $.ajax({
+                        url: 'api/v1/user'
+                    }).done(function(profile) {
+                        that.set('userProfile', JSON.stringify(profile));
+                        $.cookie("B", profile, {
+                            expires: 365
+                        });
+                        that.pubsub.trigger('user:login');
+                        that.trigger('change');
+                    }).fail(function(jqXHR, textStatus) {
+                        //TODO: send a global message
+                        that.logout();
+                    });
+
                     var path = that.get('redirectFrom');
                     if (path && path !== "login") {
                         that.unset('redirectFrom');
@@ -99,15 +153,16 @@ define(["jquery", "backbone", "./BaseModel"],
                         Backbone.history.navigate('', {
                             trigger: true
                         });
-                    };
-                    //pubsub
-                    that.pubsub.trigger('user:login');
-                    that.trigger('change');
+                    }
                     if (_.isFunction(cb)) {
                         cb();
-                    };
+                    }
                 });
                 login.fail(function(response, status, error) {
+                    that.pubsub.trigger('system:notify', {
+                        title: "demo",
+                        text: "sth"
+                    });
                     Backbone.history.navigate('login', {
                         trigger: true
                     });
@@ -125,35 +180,36 @@ define(["jquery", "backbone", "./BaseModel"],
                     //Set the new csrf token to csrf vaiable and
                     //call initialize to update the $.ajaxSetup 
                     // with new csrf
-                    csrf = response.csrf;
+                    //csrf = response.csrf;
+                    $.removeCookie('A');
                     that.initialize();
                     //pubsub
                     that.pubsub.trigger('user:logout');
                     if (_.isFunction(cb)) {
                         cb();
-                    };
+                    }
                 });
-            },
-
-            getAuth: function(cb) {
-                var that = this;
-                var Session = this.fetch();
-
-                Session.done(function(response) {
-                    that.set('authenticated', true);
-                    that.set('user', JSON.stringify(response.user));
-                });
-
-                Session.fail(function(response) {
-                    response = JSON.parse(response.responseText);
-                    that.clear();
-                    csrf = response.csrf !== csrf ? response.csrf : csrf;
-                    that.initialize();
-                });
-                if (_.isFunction(cb)) {
-                    Session.always(cb);
-                }
             }
+
+            // getAuth: function(cb) {
+            //     var that = this;
+            //     var Session = this.fetch();
+
+            //     Session.done(function(response) {
+            //         that.set('authenticated', true);
+            //         that.set('user', JSON.stringify(response.user));
+            //     });
+
+            //     Session.fail(function(response) {
+            //         response = JSON.parse(response.responseText);
+            //         that.clear();
+            //         csrf = response.csrf !== csrf ? response.csrf : csrf;
+            //         that.initialize();
+            //     });
+            //     if (_.isFunction(cb)) {
+            //         Session.always(cb);
+            //     }
+            // }
         });
 
         // Returns the Model class

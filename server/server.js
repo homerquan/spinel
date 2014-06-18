@@ -1,49 +1,70 @@
-var express = require("express"),
-    flash = require('connect-flash'),
-    httpProxy = require('http-proxy'),
-    server = module.exports = express();
+var $ = require('./lib/dollar').$,
+  express = require("express"),
+  flash = require('connect-flash'),
+  session = require('express-session'),
+  RedisStore = require('connect-redis')(session),
+  proxy = require('./lib/proxy'),
+  fs = require('fs'),
+  https = require('https'),
+  server = express();
 
-server.configure(function() {
+/*
+ * load common components
+ */
+require('./lib/allLoader').loadDollar();
 
-    server.use(express["static"](__dirname + "/../public"));
+server.use(express["static"](__dirname + "/../public"));
+server.use(require('serve-favicon')(__dirname + '/../public/img/favicon.ico'));
 
-    server.use(express.errorHandler({
-        dumpExceptions: true,
-        showStack: true
-    }));
+// // csrf token 
+// server.dynamicHelpers({
+//   token: function(req, res) {
+//       return req.session._csrf;
+//   }
+// });
 
-    // Proxy to forward api calls
-    var proxy = new httpProxy.RoutingProxy();
+/*
+ * Proxy to restful api and oauth server
+ */
+server.use(proxy.apiProxy($('config').API_HOST, $('config').API_PORT));
+server.use(proxy.authProxy($('config').AUTH_HOST, $('config').AUTH_PORT));
 
-    var apiProxy = function(host, port) {
-        return function(req, res, next) {
-            if (req.url.match(new RegExp('^\/api\/v1\/'))) {
-                req.url = req.url.replace(/^\/api\/v1\//, "/");
-                proxy.proxyRequest(req, res, {
-                    host: host,
-                    port: port
-                });
-            } else {
-                next();
-            }
-        };
-    };
+server.use(require('body-parser')());
+server.use(require('cookie-parser')($('config').COOKIE_PASS));
 
-    server.use(apiProxy('localhost', 8004));
-    server.use(express.bodyParser());
-    server.use(server.router);
+//server.use(express.csrf());
+server.use(flash());
+server.use(require('method-override')());
+server.use(require('express-session')({
+  store: new RedisStore({
+    host: $('config').REDIS_HOST,
+    port: $('config').REDIS_PORT,
+    db: $('config').REDIS_SESSION_DB,
+    pass: $('config').REDIS_PASS
+  }),
+  secret: $('config').COOKIE_PASS
+}));
 
-    // development only
-    if ('development' == server.get('env')) {
-        server.use(express.errorHandler());
-    }
+// development only
+if ('development' == server.get('env')) {
+  server.use(require('morgan')());
+  server.use(require('errorhandler')({
+    dumpExceptions: true,
+    showStack: true
+  }));
+}
 
-});
+server.set('title', $('config').TITLE);
 
+var options = {
+  key: fs.readFileSync(__dirname + '/certs/privatekey.pem'),
+  cert: fs.readFileSync(__dirname + '/certs/certificate.pem')
+};
 
 // SERVER
 // ======
 // Start Node.js Server
-server.listen(8003);
+https.createServer(options, server).listen($('config').PORT);
+//server.listen($('config').PORT);
 
-console.log('Please go to http://localhost:8003 to run demo');
+console.log('Please go to http://localhost:' + $('config').PORT + ' to run Whitetiger FE');

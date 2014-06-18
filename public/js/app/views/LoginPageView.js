@@ -1,7 +1,7 @@
 // LoginModalView.js
 // -------
 define(["jquery", "backbone", "handlebars",
-        "./BaseView", "text!templates/login_page.handlebars"
+        "./BaseView", "text!templates/login_page.hbr"
     ],
 
     function($, Backbone, Handlebars, BaseView, template) {
@@ -19,17 +19,22 @@ define(["jquery", "backbone", "handlebars",
             },
 
             // Renders the view's template to the UI
+            // If bisic cookie exists, use it
             render: function() {
-                this.$el.html(this.template());
+                var basicCookie = $.cookie('B') || null;
+                this.$el.html(this.template(basicCookie));
                 // Maintains chainability
                 return this;
             },
 
             signin: function(e) {
                 e.preventDefault();
-                var name = this.$('#username').val();
-                var pass = this.$('#password').val();
-                this.session.login(name, pass);
+                var credentials = {
+                    username: this.$('input[name=username]').val(),
+                    password: this.$('input[name=password]').val(),
+                    remember: this.$('input[name=remember]').prop('checked')
+                };
+                this.session.login(credentials, 'login');
             }
         });
 

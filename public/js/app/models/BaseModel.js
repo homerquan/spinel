@@ -1,6 +1,6 @@
 // BaseModel.js
 // --------
-define(["jquery", "backbone", "../mixins/CommonMixin"],
+define(["jquery", "backbone", "mixins/CommonMixin"],
 
     function($, Backbone, CommonMixin) {
 

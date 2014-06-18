@@ -1,7 +1,8 @@
 // LoginModalView.js
 // -------
 define(["jquery", "backbone", "handlebars",
-        "./BaseView", "text!templates/register_page.handlebars"
+        "./BaseView", "text!templates/register_page.hbr",
+        "backbone.validateAll"
     ],
 
     function($, Backbone, Handlebars, BaseView, template) {
