@@ -5,15 +5,9 @@
                 <ul class="dropdown-menu">
                   <li><a href="#profile"><i class="fa fa-user"></i>Profile</a></li>
                   <li><a href="#my-project"><i class="fa fa-flask"></i>My projects</a></li>
-                  <li><a href="#be-mentor"><i class="fa fa-users"></i>Be a mentor</a></li>
-                  <li><a href="#create-project"><i class="fa fa-folder-open"></i>Create a project</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#acadamy"><i class="fa fa-leaf"></i>For acadamy </a></li>
-                  <li><a href="#business"><i class="fa fa-suitcase"></i>For business</a></li>
                   <li class="divider"></li>
                   <li><a><i class="fa fa-wrench"></i>Settings</a></li>
                   <li><a id="user-logout"><i class="fa fa-sign-out"></i>logout</a></li>
                 </ul>
               </li>
-        <li><a id="toggle-db"><i class="fa fa-sitemap"></i>creativity graph</a></li>
 </ul>
