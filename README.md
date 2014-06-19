@@ -1,7 +1,7 @@
 ![alt tag](http://spirtfire.com/res/img/spinel.png)
 ======
 Spinel: A fast web MVC framework based on BRB
-
+![alt tag](http://spirtfire.com/res/img/spinel-screen.png)
 (Still documenting how to use it, please be patient)
 
 Features include:
