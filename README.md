@@ -5,7 +5,7 @@ Spinel: A fast web MVC framework based on BRB
 (Still documenting how to use it, please be patient)
 
 Features include:
-- Backbone
+- Backbone + Hypermeida (automatic model generating)
 - requirejs
 - Bootstrap 3.x
 - handlebars
