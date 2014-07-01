@@ -16,5 +16,6 @@
 - Out of box login (both page or modal), register
 - Out of box query suggestion, search result
 - notification
+
 ## Future
 - Integrated with Yeoman(yo) http://yeoman.io/
