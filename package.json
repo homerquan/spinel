@@ -47,7 +47,7 @@
         "passport": "0.2.x",
         "passport-facebook": "1.0.x",
         "hummingbird": "0.x",
-        "serve-favicon": "0.2.x"
+        "serve-favicon": "~2.0.0"
     },
     "devDependencies": {
         "morgan": "1.1.x",
