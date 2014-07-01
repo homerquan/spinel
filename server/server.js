@@ -27,7 +27,7 @@ server.use(require('serve-favicon')(__dirname + '/../public/img/favicon.ico'));
  * Proxy to restful api and oauth server
  */
 server.use(proxy.apiProxy($('config').API_HOST, $('config').API_PORT));
-server.use(proxy.authProxy($('config').AUTH_HOST, $('config').AUTH_PORT));
+server.use(proxy.graphProxy('54.187.139.12', 8182));
 
 server.use(require('body-parser')());
 server.use(require('cookie-parser')($('config').COOKIE_PASS));

@@ -40,7 +40,9 @@ require.config({
 
         "pnotify": "../libs/plugins/jquery.pnotify",
 
-        "cookie": "../libs/plugins/jquery.cookie"
+        "cookie": "../libs/plugins/jquery.cookie",
+
+        "d3": "../libs/plugins/d3"
 
     },
 
@@ -81,16 +83,19 @@ require.config({
 
         // Handlebars
         "handlebars": {
-
             "exports": "Handlebars"
-
         },
 
         // Backbone.validateAll plugin that depends on Backbone
         "backbone.validateAll": ["backbone"],
 
         // Jasmine-jQuery plugin
-        "jasminejquery": ["jquery"]
+        "jasminejquery": ["jquery"],
+
+        // d3
+        "d3": {
+            "exports": "d3"
+        }
 
     }
 

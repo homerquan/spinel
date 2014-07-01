@@ -1,13 +1,14 @@
 // HomePageView.js
 // -------
 define(["jquery", "backbone", "handlebars",
-        "./BaseView", "views/SearchCardsView",
+        "views/BaseView", "views/SearchCardsView",
+        "views/DsmChartView",
         "text!templates/login_home_page.hbr",
         "text!templates/anonymous_home_page.hbr"
     ],
 
     function($, Backbone, Handlebars, BaseView,
-        SearchCardsView, loginTemplate, anonymousTemplate) {
+        SearchCardsView, DsmChartView, loginTemplate, anonymousTemplate) {
 
         var View = BaseView.extend({
 
@@ -24,7 +25,8 @@ define(["jquery", "backbone", "handlebars",
             },
             // View Event Handlers
             events: {
-
+                //demo only
+                "click .control-panel-selector": "selectControlPanel"
             },
 
             // Renders the view's template to the UI
@@ -36,6 +38,12 @@ define(["jquery", "backbone", "handlebars",
                     this.$el.html(this.anonymousTemplate());
                 }
                 return this;
+            },
+
+            selectControlPanel: function(e) {
+                e.preventDefault();
+                new DsmChartView().render();
+                //demo only
             }
 
         });

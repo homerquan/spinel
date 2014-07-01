@@ -23,19 +23,17 @@ exports.apiProxy = function(host, port) {
 /*
  * forward to auth server (Oauth20)
  */
-exports.authProxy = function(host, port) {
+exports.graphProxy = function(host, port) {
 	return function(req, res, next) {
-		if (req.url.match(new RegExp('^\/auth\/'))) {
+		if (req.url.match(new RegExp('^\/graph\/v1\/'))) {
 			// trust client 
 			// if (req.path === '/auth/oauth/token') {
 			// 	req.headers.authorization = 'Basic ' + new Buffer($('config').OAUTH_CLIENT_ID + ':' + $('config').OAUTH_CLIENT_SECRET).toString('base64');
 			// }
-			req.url = req.url.replace(/^\/auth\//, "/");
+			req.url = req.url.replace(/^\/graph\/v1\//, "/");
 			proxy.proxyRequest(req, res, {
 				host: host,
-				port: port,
-				rejectUnauthorized: false,
-				https: true
+				port: port
 			});
 		} else {
 			next();

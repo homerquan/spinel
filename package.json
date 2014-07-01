@@ -30,6 +30,9 @@
         "node": "0.10.x",
         "npm": "1.4.x"
     },
+    "scripts": {
+	"test": "node node_modules/grunt-cli/bin/grunt test"
+    },
     "dependencies": {
         "express": "4.3.x",
         "underscore": "1.5.x",
