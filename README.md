@@ -17,5 +17,8 @@
 - Out of box query suggestion, search result
 - notification
 
+##Commercial Support
+Commercial support for this library is available upon request: support@homerquan.com
+
 ## Future
 - Integrated with Yeoman(yo) http://yeoman.io/
