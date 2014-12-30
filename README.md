@@ -5,6 +5,9 @@
 (Still documenting how to use it, please be patient)
 
 ## Features
+
+NOTE: a new version with ractivejs is close to release soon!
+
 - Backbone + Hypermeida (automatic model generating)
 - requirejs
 - Bootstrap 3.x
