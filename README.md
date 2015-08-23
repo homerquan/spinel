@@ -1,6 +1,6 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/homerquan/spinel?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 
-![spinel logo](http://s401765523.onlinehome.us/res/img/spinel.png)
+![spinel logo](http://s401765523.onlinehome.us/res/img/spinel-logo.svg)
 
 ======
 # Spinel: A fast web MVC framework based on BRB
