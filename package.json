@@ -1,63 +1,65 @@
 {
-    "name": "Spinel",
-    "title": "Spinel MVC framework for performance",
-    "description": "A MVC framework with up-to-date components based on Backbone.js and Require.js Boilerplate (https://github.com/gfranko/Backbone-Require-Boilerplate).",
-    "version": "1.0.0",
-    "homepage": "https://github.com/homerquan/spinel",
-    "author": {
-        "name": "Homer Quan",
-        "email": "support@homerquan.com",
-        "url": "http://www.homerquan.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:homerquan/spinel.git"
-    },
-    "bugs": {
-        "url": "https://github.com/homerquan/spinel/issues"
-    },
-    "licenses": [{
-        "type": "MIT"
-    }],
-    "main": "./server/server",
-    "keywords": [
-        "Backbone.js",
-        "Require.js",
-        "MVC",
-        "Boilerplate"
-    ],
-    "engines": {
-        "node": "0.10.x",
-        "npm": "1.4.x"
-    },
-    "scripts": {
-	"test": "node node_modules/grunt-cli/bin/grunt test"
-    },
-    "dependencies": {
-        "express": "4.3.x",
-        "underscore": "1.5.x",
-        "http-proxy": "~0.10.3",
-        "connect-flash": "0.1.x",
-        "connect-redis": "1.x",
-        "express-session": "1.x",
-        "body-parser": "1.2.x",
-        "cookie-parser": "1.1.x",
-        "method-override": "1.0.x",
-        "errorhandler": "1.0.x",
-        "passport": "0.2.x",
-        "passport-facebook": "1.0.x",
-        "hummingbird": "0.x",
-        "serve-favicon": "~2.0.0"
-    },
-    "devDependencies": {
-        "morgan": "1.1.x",
-        "blanket": "1.1.x",
-        "grunt": "~0.4.1",
-        "grunt-contrib-requirejs": "~0.4.0",
-        "grunt-contrib-jshint": "~0.3.0",
-        "grunt": "~0.4.1",
-        "grunt-contrib-less": "~0.5.0",
-        "grunt-contrib-watch": "~0.4.0",
-        "uglify-js": "~2.2.5"
+  "name": "Spinel",
+  "title": "Spinel MVC framework for performance",
+  "description": "A MVC framework with up-to-date components based on Backbone.js and Require.js Boilerplate (https://github.com/gfranko/Backbone-Require-Boilerplate).",
+  "version": "1.0.0",
+  "homepage": "https://github.com/homerquan/spinel",
+  "author": {
+    "name": "Homer Quan",
+    "email": "support@homerquan.com",
+    "url": "http://www.homerquan.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:homerquan/spinel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/homerquan/spinel/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
     }
+  ],
+  "main": "./server/server",
+  "keywords": [
+    "Backbone.js",
+    "Require.js",
+    "MVC",
+    "Boilerplate"
+  ],
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
+  "scripts": {
+    "test": "node node_modules/grunt-cli/bin/grunt test"
+  },
+  "dependencies": {
+    "body-parser": "^1.2.2",
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^1.5.0",
+    "cookie-parser": "^1.1.0",
+    "errorhandler": "1.0.x",
+    "express": "^4.3.2",
+    "express-session": "^1.11.3",
+    "http-proxy": "^0.10.4",
+    "hummingbird": "^0.7.1",
+    "method-override": "^1.0.2",
+    "passport": "^0.2.2",
+    "passport-facebook": "^1.0.3",
+    "serve-favicon": "^2.0.1",
+    "underscore": "^1.5.2"
+  },
+  "devDependencies": {
+    "blanket": "1.1.x",
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.3.0",
+    "grunt-contrib-less": "~0.5.0",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "morgan": "1.1.x",
+    "semver": "^5.0.1",
+    "uglify-js": "~2.2.5"
+  }
 }
