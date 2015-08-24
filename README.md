@@ -5,6 +5,16 @@
 ======
 # Spinel 2.0
 
+## How to run
+
+- git clone git@github.com:homerquan/spinel.git
+- `npm i .`
+- `node sever/server.js`
+
+## How to create an web app 
+
+- details about how to create components, use grunt tasks ... (TBD)
+
 ## Features
 
 - Backbone 
