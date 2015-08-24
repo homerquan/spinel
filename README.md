@@ -3,7 +3,7 @@
 ![spinel logo](http://s401765523.onlinehome.us/res/img/spinel-logo.svg)
 
 ======
-# Spinel 2.0: A fast web MVC framework
+# Spinel 2.0
 
 ## Features
 
