@@ -7,8 +7,6 @@
 
 ## Features
 
-NOTE: a new version with ractivejs is close to release soon!
-
 - Backbone + Hypermeida (automatic model generating)
 - Webcomponents by polymer
 - Requirejs
