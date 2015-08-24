@@ -7,8 +7,9 @@
 
 ## Features
 
-- Backbone + Hypermeida (automatic model generating)
+- Backbone 
 - Webcomponents by polymer
+- Hypermeida support (automatic model generating) when using with hippie
 - Requirejs
 - Bootstrap + Font awesome
 - handlebars
