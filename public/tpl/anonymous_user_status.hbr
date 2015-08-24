@@ -1,0 +1,4 @@
+<ul class="nav navbar-nav navbar-right">
+        <li><a data-bypass="true" id="user-signin">Sign in</a></li>
+        <li><a data-bypass="true" id="user-signup">Sign up</a></li>
+</ul>

@@ -1,0 +1,14 @@
+{
+  "name": "etch.js",
+  "homepage": "https://github.com/joshontheweb/etch",
+  "version": "0.6.3",
+  "_release": "0.6.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.6.3",
+    "commit": "9f318688157048031d6d660d7c9b83ed8f98e736"
+  },
+  "_source": "git://github.com/joshontheweb/etch.git",
+  "_target": "~0.6.3",
+  "_originalSource": "etch.js"
+}

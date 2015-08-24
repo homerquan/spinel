@@ -1,0 +1,11 @@
+<div class="container center-helper" data-role="content">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h1>Invalid verification code</h1>
+			<p>Reflen couldn't verify your email address. Your verification code maybe already used or expired.</p>
+			<ul class="list-inline">
+				<li><a href="/settings">Go to settings and verify again</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

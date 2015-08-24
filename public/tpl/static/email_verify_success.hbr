@@ -1,0 +1,11 @@
+<div class="container center-helper" data-role="content">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h1>Congratulations! Your email is verified</h1>
+			<ul class="list-inline">
+					<li><a href="/">Return Home</a></li>
+			    	<li><a href="/profile">View your profile</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

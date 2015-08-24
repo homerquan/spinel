@@ -1,0 +1,13 @@
+<div id="title-container" class="container-fluid page-title relative-helper" data-role="title">
+</div>
+
+<div class="container text-center">
+ <h4>Recent projects</h4>
+</div>
+<div id="feeds-container" class="container" data-role="content">
+</div>
+<div  class="container">
+<div class="row text-center">
+	<button type="button" class="btn btn-default">Load more</button>
+</div>
+</div>

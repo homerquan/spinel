@@ -1,0 +1,8 @@
+{
+	"name": "require-lazy",
+	"version": "0.3.8",
+	"main": "./lazy.js",
+	"dependencies": {
+		"requirejs": "2.x"
+	}
+}

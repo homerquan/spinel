@@ -1,0 +1,10 @@
+<div class="container center-helper" data-role="content">
+	<div class="row">
+		<div class="col-md-6 text-center">
+			<h1>Student</h1>
+		</div>
+		<div class="col-md-6 text-center">
+			<h1>Teacher</h1>
+		</div>
+	</div>
+</div>

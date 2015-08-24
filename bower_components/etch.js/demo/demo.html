@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+      <title>Etch.js - Minimal demo</title>
+      <link rel="stylesheet" href="../styles/etch.css" />
+      <style>
+        .editable { background: lightblue; }
+      </style>
+    </head>
+    <body>
+      <h2>Very very basic demo, so developers can play with it while they're developing features.</h2>
+      <p>Just click on text below to see Etch in action.</p>
+        <div class="section demo">
+            <div class="article">
+				<h1 class="title editable">Here is a title</h1>
+                <div class="body editable" data-button-class="all">
+                Text with a light blue background is editable.  You will find it easy to use etch to <u>underline</u> text as well as <b>bold</b> and <i>italic</i>.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.               
+              </div>
+            </div>
+        </div>
+        
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+        <script src="../scripts/etch.js"></script>
+        <script>
+        </script>
+        <script>
+        (function() {
+            var article = Backbone.Model.extend({
+                defaults: {
+                    title: 'Default Title',
+                    body: 'Default body text'
+                }
+            });
+
+            var articleView = Backbone.View.extend({
+                initialize: function() {
+                    _.bindAll(this, 'save')
+                    this.model.bind('save', this.save);
+                },
+
+                events: {
+                    'mousedown .editable': 'editableClick'
+                },
+
+                editableClick: etch.editableInit,
+
+                save: function() {
+
+                    // normally you would call model.save() here but this is a demo
+                    alert('Saved! Not really, this is just a demo.');
+                }
+
+            });
+
+            $article = $('.article');
+            var model = new article();
+            var view = new articleView({model: model, el: $article[0], tagName: $article[0].tagName});
+        })()
+        </script>
+    </body>
+</html>

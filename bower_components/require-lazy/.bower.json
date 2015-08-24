@@ -1,0 +1,18 @@
+{
+  "name": "require-lazy",
+  "version": "0.3.8",
+  "main": "./lazy.js",
+  "dependencies": {
+    "requirejs": "2.x"
+  },
+  "homepage": "https://github.com/nikospara/require-lazy-bower",
+  "_release": "0.3.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.8",
+    "commit": "a746d328558b07351d87640ddddce3075a7b604e"
+  },
+  "_source": "git://github.com/nikospara/require-lazy-bower.git",
+  "_target": "~0.3.8",
+  "_originalSource": "require-lazy"
+}

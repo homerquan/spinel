@@ -1,0 +1,29 @@
+<div class="container center-helper" data-role="content">
+	<div class="row">
+		<div class="col-md-4 text-center">
+			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			width="250px" height="250px" fill="#b3b3b1" viewBox="0 0 26 26" enable-background="new 0 0 26 26" xml:space="preserve">
+			<g>
+			<path d="M13.238,4.084c-5.075,0-9.203,4.124-9.203,9.192s4.128,9.193,9.203,9.193c5.063,0,9.183-4.124,9.183-9.193
+			S18.302,4.084,13.238,4.084z M13.238,21.38c-4.474,0-8.114-3.635-8.114-8.103c0-4.468,3.64-8.103,8.114-8.103
+			c4.462,0,8.093,3.635,8.093,8.103C21.331,17.745,17.7,21.38,13.238,21.38z"/>
+			<circle cx="16.4" cy="10.527" r="1.492"/>
+			<circle cx="10.153" cy="10.527" r="1.493"/>
+			<path d="M13.095,14.65c-1.162,0-2.224,0.842-2.633,1.635c-0.233,0.451-0.251,0.871-0.052,1.188
+			c0.475,1.062,1.938,1.44,3.058,1.44c1.323,0,2.697-0.497,2.781-1.605l0.002-0.036l-0.003-0.035
+			C16.06,15.339,14.26,14.65,13.095,14.65z M13.468,18.096c-1.126,0-2.08-0.402-2.32-0.978l-0.044-0.078
+			c-0.025-0.035-0.024-0.17,0.084-0.38c0.296-0.574,1.109-1.193,1.907-1.193c0.858,0,2.178,0.483,2.335,1.811
+			C15.359,17.738,14.511,18.096,13.468,18.096z"/>
+			</g>
+			</svg>
+		</div>
+		<div class="col-md-8">
+			<h1>Oops!</h1>
+			<h3>What your'e looking for could not be found</h3>
+			<ul class="list-inline">
+				<li><a href="/">Return Home</a></li>
+				<li><a href="http://reflen.com/docs/#!contact.md">Contact us</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
