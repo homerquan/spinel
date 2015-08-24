@@ -1,5 +1,7 @@
 <div class="homepage" data-role="content">
 	<div class="well well-lg">
 		<h1>Spinel is a craft</h1>
+		<link rel="import" href="comp/demo/demo.html">
+		of backbone, requirejs, less, handlebars and web components <configurable-name-tag owner="Scott"></configurable-name-tag>
 	</div>
 </div>

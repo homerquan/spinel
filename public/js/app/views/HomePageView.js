@@ -1,12 +1,12 @@
 // HomePageView.js
 // -------
 define(['jquery', 'backbone', 'handlebars',
-        './BaseView',
+        './BaseView', 'webcomponentsjs',
         'text!../../../tpl/login_home_page.hbr',
         'text!../../../tpl/anonymous_home_page.hbr'
     ],
 
-    function($, Backbone, Handlebars, BaseView,
+    function($, Backbone, Handlebars, BaseView, Webcomponents,
         loginTemplate, anonymousTemplate) {
 
         var View = BaseView.extend({

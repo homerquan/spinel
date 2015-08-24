@@ -16,7 +16,7 @@ require.config({
         'jquery-mobile': 'https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.1/jquery.mobile.min',
         'backbone.localStorage': '../libs/plugins/backbone.localStorage',
         backbone: '../libs/plugins/backbone',
-        'backbone.validation': '../libs/plugins/backbone-validation-amd',
+        'backbone.validation': '../libs/plugins/backbone-validation',
         text: '../libs/plugins/text',
         promise: '../libs/plugins/promise',
         backbone_component: '../libs/plugins/backbone-component',
@@ -24,7 +24,8 @@ require.config({
         spin: '../libs/plugins/spin',
         ladda: '../libs/plugins/ladda.min',
         webcomponentsjs: '../libs/plugins/webcomponents',
-        polymer: '../libs/plugins/polymer'
+        polymer: '../libs/plugins/polymer',
+        requirejs: '../libs/plugins/require'
     },
     shim: {
         jquerymobile: [
