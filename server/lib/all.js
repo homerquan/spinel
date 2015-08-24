@@ -11,5 +11,6 @@ var _ = require('underscore'),
 var config = _.extend(defaultConfig, envConfig);
 
 exports.all = {
-	config: config
+	config: config,
+	env: env
 };

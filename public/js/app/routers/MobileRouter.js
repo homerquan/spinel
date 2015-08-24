@@ -1,6 +1,6 @@
 // MobileRouter.js
 // ---------------
-define(["jquery", "backbone", "./BaseRouter", "views/HomePageView"],
+define(['jquery', 'backbone', './BaseRouter', 'views/HomePageView'],
 
     function($, Backbone, BaseRouter, View) {
 
@@ -9,23 +9,25 @@ define(["jquery", "backbone", "./BaseRouter", "views/HomePageView"],
             initialize: function() {
 
                 // Tells Backbone to start watching for hashchange events
-                Backbone.history.start();
+                Backbone.history.start({
+                    pushState: true
+                });
 
             },
 
             // All of your Backbone Routes (add more)
             routes: {
-
-                // When there is no hash bang on the url, the home method is called
-                "": "index"
-
+                '': 'noMobile',
+                '*anything': 'noMobile'
             },
 
-            index: function() {
-
-                // Instantiates a new view which will render the header text to the page
-                new View();
-
+            noMobile: function() {
+                require(['views/StaticPageView'], function(StaticPageView) {
+                    this.loadView(new StaticPageView({
+                        session: this.session,
+                        content: 'no_mobile'
+                    }));
+                }.bind(this));
             }
 
         });

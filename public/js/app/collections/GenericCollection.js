@@ -1,6 +1,6 @@
 // GenericCollection.js
 // -------------
-define(["jquery", "backbone", "./BaseCollection", "models/GenericItemModel"],
+define(['jquery', 'backbone', './BaseCollection', 'models/GenericItemModel'],
 
     function($, Backbone, BaseCollection, GenericItemModel) {
 

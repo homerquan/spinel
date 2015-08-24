@@ -7,8 +7,5 @@
 	"COOKIE_PASS": "anystringhere",
 	"REDIS_HOST": "localhost",
 	"REDIS_PORT": "6379",
-	"REDIS_PASS": "",
-	"REDIS_SESSION_DB": "wt_session",
-	"OAUTH_CLIENT_ID": "trustedClient",
-	"OAUTH_CLIENT_SECRET": "ssh-otherpassword"
+	"REDIS_PASS": ""
 }

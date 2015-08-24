@@ -1,20 +1,20 @@
 // UserStatusModel
 // The model stores user session status, and handles login/logout
 // --------
-define(["jquery", "backbone", "./BaseModel"],
+define(['jquery', 'backbone', './BaseModel', './MeModel'],
 
-    function($, Backbone, BaseModel) {
+    function($, Backbone, BaseModel, MeModel) {
 
         // Creates a new Backbone Model class object
         var Model = BaseModel.extend({
 
             getUrl: function(action) {
-                return this.apiUrl + "/user/status?action=" + action;
+                return this.apiUrl + '/user/status?action=' + action;
             },
 
             // Model Constructor
             initialize: function() {
-                //if not login, try auth via A cookie
+                // if not login, try auth via A cookie
                 if (!this.isLogin()) {
                     var refreshToken = $.cookie('A');
                     if (refreshToken) {
@@ -23,25 +23,32 @@ define(["jquery", "backbone", "./BaseModel"],
                         }, 'refresh');
                     }
                 }
+
+                // Check for sessionStorage support
+                if (Storage && sessionStorage) {
+                    this.supportStorage = true;
+                }
+
+                this.setAuthHeader();
+
+            },
+
+            setAuthHeader: function() {
+                // init authorization header when refreshing page
                 $.ajaxSetup({
                     headers: {
                         'Authorization': this.getAuthToken()
                     }
                 });
-
-                //Check for sessionStorage support
-                if (Storage && sessionStorage) {
-                    this.supportStorage = true;
-                }
             },
 
             // Default values for all of the Model attributes
             defaults: {
-                authenticated: false,
-                message: "",
-                userId: null,
-                userProfile: null,
-                sessionId: null,
+                accessToken: null,
+                refreshToken: null,
+                tokenType: null,
+                expiresIn: null,
+                userInfo: null,
                 rememberAuth: false
             },
 
@@ -102,67 +109,56 @@ define(["jquery", "backbone", "./BaseModel"],
              */
             login: function(credentials, type, cb) {
                 if (credentials.remember) {
-                    this.rememberAuth = true;
+                    this.set('rememberAuth', true);
                 }
                 var that = this;
                 var login = $.ajax({
                     url: that.getUrl(type),
-                    data: credentials,
+                    data: JSON.stringify(credentials) || '{}',
+                    contentType: 'application/json',
                     type: 'POST'
                 });
                 login.done(function(response) {
+                    var meModel = new MeModel();
+                    meModel.setRemote(true); //has to set remote to strip 'data'
                     that.set('accessToken', response.access_token);
                     that.set('refreshToken', response.refresh_token);
                     that.set('tokenType', response.token_type);
                     that.set('expiresIn', response.expires_in);
-                    if (that.rememberAuth) {
-                        $.cookie("A", response.refresh_token, {
+                    if (that.get('rememberAuth')) {
+                        $.cookie('A', response.refresh_token, {
                             expires: 1
                         });
                     }
-                    // add authorization header on all ajax calls
-                    $.ajaxSetup({
-                        headers: {
-                            'Authorization': that.getAuthToken()
+                    that.setAuthHeader.call(that);
+                    meModel.fetch({
+                        success: function(model, response) {
+                            var userInfo = model.attributes || {};
+                            that.set('userInfo', JSON.stringify(userInfo));
+                            $.cookie('B', userInfo, {
+                                expires: 365
+                            });
+                            that.pubsub.trigger('user:login');
+                            that.trigger('change');
+                            var path = that.get('redirectFrom');
+                            if (path && path !== 'login') {
+                                that.unset('redirectFrom');
+                                Backbone.history.navigate(path, {
+                                    trigger: true
+                                });
+                            }
+
+                            if (_.isFunction(cb)) {
+                                cb();
+                            }
+                        },
+                        error: function(model, response) {
+                            that.pubsub.trigger('user:logout');
                         }
                     });
-
-                    // if "remember me" in login, save auth data into cookie
-                    // when init session, load them from cookie
-                    $.ajax({
-                        url: 'api/v1/user'
-                    }).done(function(profile) {
-                        that.set('userProfile', JSON.stringify(profile));
-                        $.cookie("B", profile, {
-                            expires: 365
-                        });
-                        that.pubsub.trigger('user:login');
-                        that.trigger('change');
-                    }).fail(function(jqXHR, textStatus) {
-                        //TODO: send a global message
-                        that.logout();
-                    });
-
-                    var path = that.get('redirectFrom');
-                    if (path && path !== "login") {
-                        that.unset('redirectFrom');
-                        Backbone.history.navigate(path, {
-                            trigger: true
-                        });
-                    } else {
-                        Backbone.history.navigate('', {
-                            trigger: true
-                        });
-                    }
-                    if (_.isFunction(cb)) {
-                        cb();
-                    }
                 });
                 login.fail(function(response, status, error) {
-                    that.pubsub.trigger('system:notify', {
-                        title: "demo",
-                        text: "sth"
-                    });
+                    that.pubsub.trigger('system:notify', that.convertError(response));
                     Backbone.history.navigate('login', {
                         trigger: true
                     });
@@ -189,27 +185,23 @@ define(["jquery", "backbone", "./BaseModel"],
                         cb();
                     }
                 });
+            },
+            hasRole: function(role) {
+                var userInfo = this.get('userInfo');
+                if (userInfo.roles) {
+                    return _.contains(userInfo.roles, role);
+                } else {
+                    return false;
+                }
+            },
+            addRole: function(role) {
+                var userInfo = this.get('userInfo');
+                if (userInfo.roles) {
+                    userInfo.roles.push(role);
+                    this.set('userInfo', JSON.stringify(userInfo));
+                }
+                return this;
             }
-
-            // getAuth: function(cb) {
-            //     var that = this;
-            //     var Session = this.fetch();
-
-            //     Session.done(function(response) {
-            //         that.set('authenticated', true);
-            //         that.set('user', JSON.stringify(response.user));
-            //     });
-
-            //     Session.fail(function(response) {
-            //         response = JSON.parse(response.responseText);
-            //         that.clear();
-            //         csrf = response.csrf !== csrf ? response.csrf : csrf;
-            //         that.initialize();
-            //     });
-            //     if (_.isFunction(cb)) {
-            //         Session.always(cb);
-            //     }
-            // }
         });
 
         // Returns the Model class

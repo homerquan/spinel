@@ -1,19 +1,18 @@
 // HomePageView.js
 // -------
-define(["jquery", "backbone", "handlebars",
-        "views/BaseView", "views/SearchCardsView",
-        "views/DsmChartView",
-        "text!templates/login_home_page.hbr",
-        "text!templates/anonymous_home_page.hbr"
+define(['jquery', 'backbone', 'handlebars',
+        './BaseView',
+        'text!../../../tpl/login_home_page.hbr',
+        'text!../../../tpl/anonymous_home_page.hbr'
     ],
 
     function($, Backbone, Handlebars, BaseView,
-        SearchCardsView, DsmChartView, loginTemplate, anonymousTemplate) {
+        loginTemplate, anonymousTemplate) {
 
         var View = BaseView.extend({
 
             // The DOM Element associated with this view
-            el: "#page-container",
+            el: '#page-container',
             loginTemplate: Handlebars.compile(loginTemplate),
             anonymousTemplate: Handlebars.compile(anonymousTemplate),
 
@@ -25,25 +24,37 @@ define(["jquery", "backbone", "handlebars",
             },
             // View Event Handlers
             events: {
-                //demo only
-                "click .control-panel-selector": "selectControlPanel"
+
             },
 
             // Renders the view's template to the UI
             render: function() {
-
+                var that = this;
                 if (this.session && this.session.isLogin()) {
-                    this.$el.html(this.loginTemplate(this.session.get('userProfile')));
+                    this.$el.html(this.loginTemplate());
+                    require(['collections/Feeds', 'views/FeedCardView'], function(Collection, FeedCardView) {
+                        that.itemView = FeedCardView;
+                        that.collection = new Collection();
+                        that.collection.on('sync', that.renderFeeds, that);
+                        _.defer(function() {
+                            that.collection.fetch();
+                        });
+                    });
                 } else {
                     this.$el.html(this.anonymousTemplate());
                 }
                 return this;
             },
 
-            selectControlPanel: function(e) {
-                e.preventDefault();
-                new DsmChartView().render();
-                //demo only
+            renderFeeds: function() {
+                this.collection.models.reverse().forEach(this.addItem.bind(this));
+            },
+
+            addItem: function(model) {
+                $('#feeds-container').append(new this.itemView({
+                    model: model,
+                    parent: this
+                }).render().$el);
             }
 
         });

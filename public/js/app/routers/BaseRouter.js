@@ -1,21 +1,24 @@
 define([
-    'underscore',
-    'backbone'
-], function(_, Backbone) {
+    'underscore', 'backbone', 'mixins/CommonMixin'
+], function(_, Backbone, CommonMixin) {
 
     var BaseRouter = Backbone.Router.extend({
 
         // Routes that need authentication and if user is not authenticated
         // gets redirect to login page
-        requresAuth: ['#profile', '#project'],
+        requresAuth: [],
 
         // Routes that should not be accessible if user is authenticated
         // for example, login, register, forgetpasword ...
-        preventAccessWhenAuth: ['#login'],
-
+        preventAccessWhenAuth: [],
         currentPage: null,
+        pubsub: _.extend({}, Backbone.Events),
 
         loadView: function(view) {
+            this.pubsub.trigger('system:startLoadView', '');
+            // reset model and pnotify
+            $('.modal').modal('hide');
+            $('#modal-container').empty();
             // avoid event leaking
             if (this.currentPage) {
                 this.currentPage.clear();
@@ -24,6 +27,9 @@ define([
             // events need to rebind, only render doesn't work
             this.currentPage.delegateEvents();
             this.currentPage.render();
+            _.defer(function() {
+                this.pubsub.trigger('system:finishLoadView', '');
+            }.bind(this));
         },
 
         route: function(route, name, callback) {
@@ -57,7 +63,8 @@ define([
             //Checking if user is authenticated or not
             //then check the path if the path requires authentication 
             var isLogin = this.session.isLogin();
-            var path = Backbone.history.location.hash;
+            var pathAndQuery = Backbone.history.location.pathname;
+            var path = pathAndQuery.split('/')[1];
             var needAuth = _.contains(this.requresAuth, path);
             var cancleAccess = _.contains(this.preventAccessWhenAuth, path);
 
@@ -65,7 +72,7 @@ define([
                 //If user gets redirect to login because wanted to access
                 // to a route that requires login, save the path in session
                 // to redirect the user back to path after successful login
-                this.session.set('redirectFrom', path);
+                this.session.set('redirectFrom', pathAndQuery);
                 Backbone.history.navigate('login', {
                     trigger: true
                 });
@@ -100,6 +107,7 @@ define([
         }
     });
 
+    _.extend(BaseRouter.prototype, CommonMixin);
     return BaseRouter;
 
 });

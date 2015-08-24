@@ -3,11 +3,11 @@
 
 // Include Mobile Specific JavaScript files here (or inside of your Mobile router)
 // load pnotify to jquery
-require(["jquery", "backbone", "routers/MobileRouter", "pnotify", "cookie", "jquerymobile", "backbone.validateAll"],
+require(['jquery', 'backbone', 'routers/MobileRouter', 'pnotify', 'jquery.cookie', 'jquery-mobile', 'backbone.validation'],
 
 	function($, Backbone, MobileRouter) {
 
-		$.pnotify.defaults.styling = "bootstrap3";
+		$.pnotify.defaults.styling = 'bootstrap3';
 		$.cookie.json = true;
 
 		// Prevents all anchor click handling
