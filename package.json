@@ -1,8 +1,8 @@
 {
   "name": "Spinel",
-  "title": "Spinel MVC framework for performance",
-  "description": "A MVC framework with up-to-date components based on Backbone.js and Require.js Boilerplate (https://github.com/gfranko/Backbone-Require-Boilerplate).",
-  "version": "1.0.0",
+  "title": "Spinel - A performance-driver javascript web framework",
+  "description": "A MVC framework for performance web apps.",
+  "version": "2.0.0",
   "homepage": "https://github.com/homerquan/spinel",
   "author": {
     "name": "Homer Quan",
@@ -16,11 +16,9 @@
   "bugs": {
     "url": "https://github.com/homerquan/spinel/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
+  "licenses": [{
+    "type": "MIT"
+  }],
   "main": "./server/server",
   "keywords": [
     "Backbone.js",
