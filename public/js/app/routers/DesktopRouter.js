@@ -66,6 +66,13 @@ define(['jquery', 'backbone', './BaseRouter', '../models/SessionModel',
                 }
             },
 
+            register: function() {
+                require(['views/RegisterPageView'], function(RegisterPageView) {
+                    this.loadView(new RegisterPageView({
+                        session: this.session
+                    }));
+                }.bind(this));
+            },
 
             verifyEmail: function(token) {
                 require(['views/EmailVerifyPageView'], function(EmailVerifyPageView) {

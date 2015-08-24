@@ -2,30 +2,14 @@
 
     <div class="row action-title">
         <div class="col-md-offset-6 col-md-6">
-            <h1>Join Reflen for free</h1>
+            <h1>Join for free</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <h3><i class="fa fa-flask"></i> Learn</h3>
-            Learn from doing, learn from each other
-            <h3><i class="fa fa-users"></i> Teach</h3>
-            Anyone can teach, almost anything
-            <h3><i class="fa fa-paper-plane"></i> Fun</h3>
-            Enjoy solving problems
-            <h3><i class="fa fa-code-fork"></i> Career</h3>
-            Show your works and get connected
+            
         </div>
         <div class="col-md-6">
-            <!--enable it once social login finished-->
-            <div class="row sr-only">
-                <div class="col-md-6 col-xs-12" >
-                    <a href="/auth/github" class="btn btn-default btn-block"><i class="fa fa-github"></i> Signin GitHub</a>
-                </div>
-                <div class="col-md-6 col-xs-12" >
-                    <a href="/auth/twitter" class="btn btn-default btn-block"><i class="fa fa-linkedin-square"></i> Signin Linkedin</a>
-                </div>
-            </div>
             <div class="row inline-input input-container">
                 <div class="relative-helper input-container col-md-6">
                     <label for="firstname" class="sr-only">First name</label>
