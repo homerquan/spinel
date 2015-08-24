@@ -3,7 +3,9 @@
 ![spinel logo](http://s401765523.onlinehome.us/res/img/spinel-logo.svg)
 
 ======
-# Spinel: A fast web MVC framework based on BRB
+# Spinel 2.0: A fast web MVC framework
+
+
 
 (Still documenting how to use it, please be patient)
 
@@ -12,6 +14,7 @@
 NOTE: a new version with ractivejs is close to release soon!
 
 - Backbone + Hypermeida (automatic model generating)
+- webcomponents by polymer
 - requirejs
 - Bootstrap 3.x
 - handlebars
