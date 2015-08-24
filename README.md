@@ -29,7 +29,7 @@
 - Session management
 - Out of box login, register, notification
 
-## Create a web app using mock api or real API in seconds
+## Link to a mock API or a data-driven API in seconds
 
 - Using [spinel mock api](https://github.com/homerquan/spinel-mock-api) to prototype a mockup api by editing text files 
 - Using [hippe](https://github.com/homerquan/hippie) to create a real API with Mongo DB
