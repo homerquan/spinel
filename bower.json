@@ -27,7 +27,7 @@
     "text": "~2.0.12"
   },
   "resolutions": {
-    "jquery": "<2",
+    "jquery": ">2",
     "bootstrap": "3",
     "backbone": "~1.2.2"
   }
