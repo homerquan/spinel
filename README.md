@@ -14,17 +14,15 @@
 NOTE: a new version with ractivejs is close to release soon!
 
 - Backbone + Hypermeida (automatic model generating)
-- webcomponents by polymer
-- requirejs
-- Bootstrap 3.x
+- Webcomponents by polymer
+- Requirejs
+- Bootstrap + Font awesome
 - handlebars
-- PubSub
+- PubSub 
 - Less
 - Base Class and Mixins
 - Session management
-- Out of box login (both page or modal), register
-- Out of box query suggestion, search result
-- notification
+- Out of box login (both page or modal), register, notification
 
 ##Commercial Support
 Commercial support for this library is available upon request: support@homerquan.com
