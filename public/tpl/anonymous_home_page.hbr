@@ -1,3 +1,5 @@
 <div class="homepage" data-role="content">
-	
+	<div class="well well-lg">
+		<h1>Spinel is a craft</h1>
+	</div>
 </div>
