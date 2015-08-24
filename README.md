@@ -5,10 +5,6 @@
 ======
 # Spinel 2.0: A fast web MVC framework
 
-
-
-(Still documenting how to use it, please be patient)
-
 ## Features
 
 NOTE: a new version with ractivejs is close to release soon!
@@ -22,7 +18,12 @@ NOTE: a new version with ractivejs is close to release soon!
 - Less
 - Base Class and Mixins
 - Session management
-- Out of box login (both page or modal), register, notification
+- Out of box login, register, notification
+
+## Create a web app using mock api or real API in seconds
+
+- Using [spinel mock api](https://github.com/homerquan/spinel-mock-api) to prototype a mockup api by editing text files 
+- Using [hippe](https://github.com/homerquan/hippie) to create a real API with Mongo DB
 
 ##Commercial Support
 Commercial support for this library is available upon request: support@homerquan.com
