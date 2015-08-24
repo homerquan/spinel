@@ -43,7 +43,7 @@ Commercial support for this library is available upon request: support@homerquan
 ## License
 The MIT license.
 
-Copyright (c) 2013 Homer Quan (http://www.homerquan.com)
+Copyright (c) 2013-2015 Homer Quan (http://www.homerquan.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
