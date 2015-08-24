@@ -7,7 +7,7 @@
 
 ## How to run
 
-- git clone git@github.com:homerquan/spinel.git
+- `git clone git@github.com:homerquan/spinel.git`
 - `npm i .`
 - `node sever/server.js`
 
