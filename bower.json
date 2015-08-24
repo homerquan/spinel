@@ -18,22 +18,17 @@
   ],
   "dependencies": {
     "backbone": "~1.1.2",
-    "text": "~2.0.12",
-    "backbone.validation": "~0.7.1",
-    "moment": "~2.8.4",
-    "backbone.localStorage": "~1.1.9",
     "backbone_component": "~0.2.2",
-    "backbone.epoxy": "~1.1.0",
-    "vis": "~3.6.3",
-    "fullpage.js": "~2.4.3",
-    "bootstrap-switch": "~3.3.1",
+    "backbone.localStorage": "~1.1.9",
+    "backbone.validation": "backbone-validation#~0.11.5",
+    "ladda": "~0.9.4",
+    "moment": "~2.8.4",
     "require-lazy": "~0.3.8",
-    "moment-timezone": "~0.2.5",
-    "ladda": "~0.9.4"
+    "text": "~2.0.12"
   },
   "resolutions": {
     "jquery": "<2",
     "bootstrap": "3",
-    "backbone": "~1.1.2"
+    "backbone": "~1.2.2"
   }
 }

@@ -1,14 +1,25 @@
 {
   "name": "backbone.validation",
-  "homepage": "https://github.com/rsskga/backbone.validation",
-  "version": "0.7.1",
-  "_release": "0.7.1",
+  "version": "0.11.5",
+  "main": "dist/backbone-validation.js",
+  "dependencies": {
+    "underscore": ">=1.5.0",
+    "backbone": ">=1.1.2"
+  },
+  "ignore": [
+    "lib",
+    "tests",
+    ".html"
+  ],
+  "homepage": "https://github.com/thedersen/backbone.validation",
+  "_release": "0.11.5",
   "_resolution": {
     "type": "version",
-    "tag": "v0.7.1",
-    "commit": "769c357c3cca9479980f0a7e6965826e9997b39f"
+    "tag": "v0.11.5",
+    "commit": "1b949ca291d56f79bf035e0ba380e19c10c6758c"
   },
-  "_source": "git://github.com/rsskga/backbone.validation.git",
-  "_target": "~0.7.1",
-  "_originalSource": "backbone.validation"
+  "_source": "git://github.com/thedersen/backbone.validation.git",
+  "_target": "~0.11.5",
+  "_originalSource": "backbone-validation",
+  "_direct": true
 }
